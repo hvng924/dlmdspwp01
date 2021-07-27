@@ -1,4 +1,4 @@
-## To install required, run:
+### To install required packages, run:
 ```
 pip install -r packages.txt
 ```
