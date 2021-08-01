@@ -11,6 +11,8 @@ SQLITE_ENGINE = None
 class SqliteFactory(AbstractFactory):
     @staticmethod
     def get_connection() -> Engine:
+        global SQLITE_ENGINE
+        
         if SQLITE_ENGINE is None:
             SQLITE_ENGINE = engine.create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
         return SQLITE_ENGINE
