@@ -8,7 +8,7 @@ class AbstractFactory:
         raise NotImplemented
 
 SQLITE_ENGINE = None
-class SqliteFactory(AbstractFactory):
+class SqliteMemoryFactory(AbstractFactory):
     @staticmethod
     def get_connection() -> Engine:
         global SQLITE_ENGINE

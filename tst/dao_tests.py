@@ -3,12 +3,12 @@ from db.dao.train import TrainDAO
 from db.schemas.test import Test
 import unittest
 
-from db.connection_factory import SqliteFactory
+from db.connection_factory import SqliteMemoryFactory
 
 from db.dao.test import TestDAO
 
 class TestTestDAO(unittest.TestCase):
-    dao = TestDAO(SqliteFactory)
+    dao = TestDAO(SqliteMemoryFactory)
 
     def test_save(self):
         entry = {
@@ -21,7 +21,7 @@ class TestTestDAO(unittest.TestCase):
         self.assertEqual(rows[0]['y'], entry['y'])
 
 class TestTrainDAO(unittest.TestCase):
-    dao = TrainDAO(SqliteFactory)
+    dao = TrainDAO(SqliteMemoryFactory)
 
     def test_save(self):
         entry = {
@@ -40,7 +40,7 @@ class TestTrainDAO(unittest.TestCase):
         self.assertEqual(rows[0]['y4'], entry['y4'])
 
 class TestIealDAO(unittest.TestCase):
-    dao = IdealDAO(SqliteFactory)
+    dao = IdealDAO(SqliteMemoryFactory)
 
     def test_save(self):
         entry = {'x': 1}

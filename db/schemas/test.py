@@ -1,4 +1,4 @@
-from db.connection_factory import SqliteFactory
+from db.connection_factory import SqliteMemoryFactory
 from sqlalchemy import *
 from sqlalchemy.sql.elements import True_
 from sqlalchemy.sql.functions import session_user
