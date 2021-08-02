@@ -6,7 +6,7 @@ from sqlalchemy.orm.session import Session
 from db.connection_factory import AbstractFactory
 import db.schemas.base as sb
 
-class Base:
+class BaseDAO:
     conn: Engine = None
 
     def __init__(self, connection_factory: AbstractFactory) -> None:
