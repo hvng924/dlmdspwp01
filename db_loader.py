@@ -29,7 +29,7 @@ def load_csv_to_db(factory: AbstractFactory):
         columns = list(frame.columns)
         
         for idx, row in frame.iterrows():
-            data = {'id': idx}
+            data = {'id': idx + 1}
             
             for c in columns:
                 data[c] = row[c]
