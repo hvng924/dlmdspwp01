@@ -5,6 +5,14 @@ from sqlalchemy.engine.base import Engine
 class AbstractFactory:
     @staticmethod
     def get_connection() -> Engine:
+        """Get connection engine
+
+        Raises:
+            NotImplemented: no implementation error
+
+        Returns:
+            Engine: connection engine
+        """
         raise NotImplemented
 
 
