@@ -13,14 +13,12 @@ FILE_TO_DAO = {
     'train.csv': TrainDAO,
 }
 
-"""
-Load all the CSV files in DATA_DIR to database
-
-:param factory: connection factory
-:returns: None
-"""
-
 def load_csv_to_db(factory: AbstractFactory):
+    """Load CSV data to database
+
+    Args:
+        factory (AbstractFactory): Database connection factory class
+    """
     files = [ f for f in os.listdir(DATA_DIR) if os.path.isfile(os.path.join(DATA_DIR, f)) ]
     
     for f in files:

@@ -8,7 +8,12 @@ class TrainDAO(BaseDAO):
     def __init__(self, connection_factory: AbstractFactory) -> None:
         super().__init__(connection_factory)
 
-    def get_all(self):
+    def get_all(self) -> list:
+        """Get all rows
+
+        Returns:
+            list: list of dict of data in table
+        """
         rows = []
 
         with self.get_session() as session:
@@ -26,7 +31,12 @@ class TrainDAO(BaseDAO):
         
         return rows
 
-    def save(self, data):
+    def save(self, data: dict):
+        """Insert data
+
+        Args:
+            data (dict): data values
+        """
         with self.get_session() as session:
             row = Train()
             for key in data.keys():
