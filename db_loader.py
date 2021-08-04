@@ -13,11 +13,11 @@ FILE_TO_DAO = {
     'train.csv': TrainDAO,
 }
 
-""" Load all the CSV files in DATA_DIR to database
-Parameters:
-- factory: connection factory
+"""
+Load all the CSV files in DATA_DIR to database
 
-Return: None
+:param factory: connection factory
+:returns: None
 """
 
 def load_csv_to_db(factory: AbstractFactory):
