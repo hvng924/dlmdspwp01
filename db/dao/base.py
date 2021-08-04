@@ -16,7 +16,7 @@ class BaseDAO:
     """
     Establish connection and create all tables
     
-    :param connection_factory: AbtractFactory -- A connection factory
+    :param connection_factory: AbtractFactory -- A connection factory class
     :returns: None
     """
     def __init__(self, connection_factory: AbstractFactory) -> None:
