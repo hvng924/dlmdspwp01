@@ -21,8 +21,8 @@ class TestDAO(BaseDAO):
 
         return rows
 
-    def save(self, entry):
+    def save(self, data):
         with self.get_session() as session:
-            row = Test(x = entry['x'], y = entry['y'])
+            row = Test(x = data['x'], y = data['y'])
             session.add(row)
             session.commit()

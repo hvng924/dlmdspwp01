@@ -3,7 +3,7 @@ import os
 
 from pandas.core.frame import DataFrame
 
-CSV_PATH = '../data'
+CSV_PATH = 'data'
 
 def load_csv(csv_file) -> DataFrame:
     file_path = os.path.join(os.getcwd(), CSV_PATH, csv_file)
