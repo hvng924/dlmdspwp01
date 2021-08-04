@@ -13,6 +13,13 @@ FILE_TO_DAO = {
     'train.csv': TrainDAO,
 }
 
+""" Load all the CSV files in DATA_DIR to database
+Parameters:
+- factory: connection factory
+
+Return: None
+"""
+
 def load_csv_to_db(factory: AbstractFactory):
     files = [ f for f in os.listdir(DATA_DIR) if os.path.isfile(os.path.join(DATA_DIR, f)) ]
     
@@ -21,8 +28,8 @@ def load_csv_to_db(factory: AbstractFactory):
         frame = load_csv(f)
         columns = list(frame.columns)
         
-        for _, row in frame.iterrows():
-            data = {}
+        for idx, row in frame.iterrows():
+            data = {'id': idx}
             
             for c in columns:
                 data[c] = row[c]

@@ -28,12 +28,8 @@ class TrainDAO(BaseDAO):
 
     def save(self, data):
         with self.get_session() as session:
-            row = Train(
-                x = data['x'],
-                y1 = data['y1'],
-                y2 = data['y2'],
-                y3 = data['y3'],
-                y4 = data['y4'],
-            )
+            row = Train()
+            for key in data.keys():
+                setattr(row, key, data[key])
             session.add(row)
             session.commit()

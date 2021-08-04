@@ -3,6 +3,7 @@ from db.connection_factory import AbstractFactory
 from db.schemas.test import Test
 from .base import BaseDAO
 
+
 class TestDAO(BaseDAO):
     def __init__(self, connection_factory: AbstractFactory) -> None:
         super().__init__(connection_factory)
@@ -23,6 +24,8 @@ class TestDAO(BaseDAO):
 
     def save(self, data):
         with self.get_session() as session:
-            row = Test(x = data['x'], y = data['y'])
+            row = Test()
+            for key in data.keys():
+                setattr(row, key, data[key])
             session.add(row)
             session.commit()
