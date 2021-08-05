@@ -1,11 +1,10 @@
 from db.dao.ideal import IdealDAO
 from db.dao.train import TrainDAO
-from db.schemas.test import Test
+from db.dao.test import TestDAO, TestIdealDAO
 import unittest
 
 from db.connection_factory import SqliteMemoryFactory
 
-from db.dao.test import TestDAO
 
 class TestTestDAO(unittest.TestCase):
     dao = TestDAO(SqliteMemoryFactory)
@@ -19,6 +18,25 @@ class TestTestDAO(unittest.TestCase):
         rows = self.dao.get_all()
         self.assertEqual(rows[0]['x'], entry['x'])
         self.assertEqual(rows[0]['y'], entry['y'])
+
+
+class TestTestIdealDAO(unittest.TestCase):
+    dao = TestIdealDAO(SqliteMemoryFactory)
+
+    def test_save(self):
+        entry = {
+            'x': 1,
+            'y': 2,
+            'delta_y': 0.1,
+            'ideal_no': 1,
+        }
+        self.dao.save(entry)
+        rows = self.dao.get_all()
+        self.assertEqual(rows[0]['x'], entry['x'])
+        self.assertEqual(rows[0]['y'], entry['y'])
+        self.assertEqual(rows[0]['delta_y'], entry['delta_y'])
+        self.assertEqual(rows[0]['ideal_no'], entry['ideal_no'])
+
 
 class TestTrainDAO(unittest.TestCase):
     dao = TrainDAO(SqliteMemoryFactory)
@@ -38,6 +56,7 @@ class TestTrainDAO(unittest.TestCase):
         self.assertEqual(rows[0]['y2'], entry['y2'])
         self.assertEqual(rows[0]['y3'], entry['y3'])
         self.assertEqual(rows[0]['y4'], entry['y4'])
+
 
 class TestIealDAO(unittest.TestCase):
     dao = IdealDAO(SqliteMemoryFactory)
