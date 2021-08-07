@@ -26,3 +26,6 @@ def list_to_dataframe(lst: List[dict]) -> pd.DataFrame:
             columns[column].append(item[column])
 
     return pd.DataFrame(data=columns)
+
+def max_deviation(a: np.ndarray, b: np.ndarray) -> List[float]:
+    return np.max(np.absolute(a - b))

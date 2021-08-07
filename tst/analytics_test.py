@@ -1,5 +1,6 @@
 import unittest
-from analytics import sum_deviations_squared, list_to_dataframe
+from analytics import sum_deviations_squared, list_to_dataframe, max_deviation
+import numpy as np
 
 
 class AnalyticsTests(unittest.TestCase):
@@ -20,3 +21,9 @@ class AnalyticsTests(unittest.TestCase):
             'b': {0: 2, 1: 4}
         }
         self.assertEqual(expected, list_to_dataframe(lst).to_dict())
+
+    def test_max_deviation(self):
+        a = np.array([1, 2, 3])
+        b = np.array([5, 1, 9.5])
+
+        self.assertEqual(6.5, max_deviation(a, b))
