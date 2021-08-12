@@ -23,7 +23,7 @@ class AnalyticsTests(unittest.TestCase):
         self.assertEqual(expected, list_to_dataframe(lst).to_dict())
 
     def test_max_deviation(self):
-        a = np.array([1, 2, 3])
-        b = np.array([5, 1, 9.5])
+        a = np.array([1, 2, 3, 100])
+        b = np.array([5, 1, 9.5, 1000.99])
 
-        self.assertEqual(6.5, max_deviation(a, b))
+        self.assertEqual(900.99, max_deviation(a, b))
